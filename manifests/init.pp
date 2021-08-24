@@ -41,15 +41,17 @@ if $weekday != undef {
 
 $cron_runscripts = join($run_scripts, " ")
 
-if $minute = undef {
-  $minute = fqdn_rand(60, 'sc_autoupdate_cron_minute')
+if $minute == undef {
+  $cron_minute = fqdn_rand(60, 'sc_autoupdate_cron_minute')
+} else {
+  $cron_minute = $minute
 }
 
 cron{'sc_autoupdate':
   ensure  => $cron_ensure,
   command => "/opt/repos/sc-lib/update/wrapper.sh $cron_runscripts >>/var/log/updates.log 2>&1",
   hour    => $hour,
-  minute  => $minute,
+  minute  => $cron_minute,
   user    => 'root',
   weekday => $cron_weekday,
 }
