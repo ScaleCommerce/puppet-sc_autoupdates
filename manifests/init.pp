@@ -47,8 +47,8 @@ if $minute = undef {
 
 cron{'sc_autoupdate':
   ensure  => $cron_ensure,
-  command => "/opt/repos/sc-lib/update/wrapper.sh $cron_runscripts |tee -a /var/log/updates.log >/dev/null 2>&1",
-  hour    => ['9'],
+  command => "/opt/repos/sc-lib/update/wrapper.sh $cron_runscripts >>/var/log/updates.log 2>&1",
+  hour    => $hour,
   minute  => $minute,
   user    => 'root',
   weekday => $cron_weekday,
