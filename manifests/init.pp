@@ -16,7 +16,7 @@ file{'/.autoupdate':
   content => $autoupdate_status,
 }
 
-# calculate weekday if not overwritten in hiera
+# calculate weekday if not set in hiera
 if $weekday != undef {
   $cron_weekday = $weekday
   } else {
@@ -34,7 +34,7 @@ if $weekday != undef {
         $cron_weekday = 'Thursday'
       }
     }
-    # aöll other servers
+    # all other servers
     default:   { $cron_weekday = 'Thursday' }
   }
 }
