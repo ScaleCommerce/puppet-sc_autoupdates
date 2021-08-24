@@ -1,16 +1,15 @@
 class sc_autoupdates(
-  $autoupdate = 'yes',
+  $autoupdate = 'enable',
   $weekday = undef,
   $hour = 9,
   $minute = undef,
   $run_scripts = [],
 ) {
 
-
 # write auto update status to file
 case $autoupdate {
-  /(?i:yes)/: { $autoupdate_status = $autoupdate ; $cron_ensure = 'present'  }
-  default: { $autoupdate_status = 'no' ;  $cron_ensure = 'absent' }
+  /(?i:enable)/: { $autoupdate_status = $autoupdate ; $cron_ensure = 'present'  }
+  default: { $autoupdate_status = 'disable' ;  $cron_ensure = 'absent' }
 }
 file{'/.autoupdate':
   content => $autoupdate_status,
