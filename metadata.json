@@ -7,4 +7,7 @@
     "source": "https://github.com/ScaleCommerce/puppet-sc_autoupdates.git",
     "project_page": "https://github.com/ScaleCommerce/sc_autoupdates.git",
     "issues_url": "https://github.com/ScaleCommerce/sc_autoupdates.git",
+    "dependencies": [
+      {"name":"puppet-unattended_upgrades","version_requirement":">= 5.1.0"}
+    ]
   }
