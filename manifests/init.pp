@@ -26,11 +26,11 @@ if $weekday != undef {
     /(\d)$/: {
       $number = Integer("${1}")
       if $number % 2 == 0 {
-         # even number run on Wed
-        $cron_weekday = 'Wednesday'
-      } else {
-        # odd numbers run on Thu
+         # even number run on Thu
         $cron_weekday = 'Thursday'
+      } else {
+        # odd numbers run on Wed
+        $cron_weekday = 'Wednesday'
       }
     }
     # all other servers
