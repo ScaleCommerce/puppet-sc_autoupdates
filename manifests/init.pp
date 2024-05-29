@@ -15,7 +15,7 @@ file{'/.autoupdate':
   content => $autoupdate_status,
 }
 
-if $facts['os']['distro']['codename'] == 'bionic' or $facts['os']['distro']['codename'] == 'focal' {
+if $facts['os']['distro']['codename'] == 'focal' or $facts['os']['distro']['codename'] == 'jammy' or $facts['os']['distro']['codename'] == 'noble' {
   # calculate weekday if not set in hiera
   if $weekday != undef {
     $cron_weekday = $weekday
